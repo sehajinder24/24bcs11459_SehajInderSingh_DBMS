@@ -1,0 +1,7 @@
+1. https://platform.stratascratch.com/coding/10552-identify-never-sold-inventory-products?code_type=1
+7. https://platform.stratascratch.com/coding/10365-common-friends-script?code_type=1
+13. https://platform.stratascratch.com/coding/2165-sales-percentage-weeks-beginning-and-end?code_type=1
+
+2. https://platform.stratascratch.com/coding/10549-top-customers-with-dense-ranking?code_type=1
+8. https://datalemur.com/questions/rolling-average-tweets
+14. https://datalemur.com/questions/repeated-payments

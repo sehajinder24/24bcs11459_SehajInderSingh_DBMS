@@ -1,0 +1,7 @@
+3. https://www.codechef.com/learn/course/sql-intermediate/SQ00BS02/problems/SQLKEY01C?tab=statement
+9. https://www.codechef.com/learn/course/sql-intermediate/SQ00BS02/problems/GSQ64
+15. https://www.codechef.com/learn/course/sql-intermediate/SQ00BS03/problems/GSQ68?tab=statement
+
+4. https://datalemur.com/questions/time-spent-snaps
+10. https://datalemur.com/questions/patient-call-history
+16. https://platform.stratascratch.com/coding/2146-department-manager-and-employee-salary-comparison?code_type=1
