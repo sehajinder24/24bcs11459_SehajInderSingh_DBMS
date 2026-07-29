@@ -1,0 +1,17 @@
+-- 1.Employee and Manager Names: Display a list of employee names along with their manager's names. Use the 'employees' table provided.
+
+SELECT
+    e1.employee_name AS Employee,
+    e2.employee_name AS Manager
+FROM
+    employees AS e1  -- Alias for employee
+LEFT JOIN
+    employees AS e2  -- Alias for manager
+ON
+    e1.manager_id = e2.employee_id; 
+
+-- 2.Every Possible Combination: Show every possible combination of 'customer_name' from the 'customers' table and 'product_name' from the 'products' table.
+
+select C.customer_name,P.product_name 
+from customers C
+cross join products P;
