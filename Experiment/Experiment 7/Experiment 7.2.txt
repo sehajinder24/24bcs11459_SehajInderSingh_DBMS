@@ -1,0 +1,68 @@
+DROP TABLE ORDERS;
+
+CREATE TABLE Orders (
+    Order_ID       NUMBER PRIMARY KEY,
+    Equipment     VARCHAR2(100),
+    Variant        VARCHAR2(100),
+    Amount         NUMBER(12,2)
+);
+
+INSERT INTO Orders VALUES (1,  'Kar98',             'Infantry',          8500);
+INSERT INTO Orders VALUES (2,  'MP40',              'Infantry',         12500);
+INSERT INTO Orders VALUES (3,  'Gewehr 43',         'Infantry',         14000);
+INSERT INTO Orders VALUES (4,  'MP44',              'Infantry',         16000);
+
+INSERT INTO Orders VALUES (5,  'Opel Blitz',        'Transport',         22000);
+INSERT INTO Orders VALUES (6,  'Sd.Kfz. 251',       'Mechanized Transport', 45000);
+INSERT INTO Orders VALUES (7,  'Flak 37',            'Anti Air',                38000);
+INSERT INTO Orders VALUES (8,  'Flak 40',            'Anti Air',                55000);
+INSERT INTO Orders VALUES (9,  'Flak 44',            'Anti Air',                60000);
+
+INSERT INTO Orders VALUES (10, '15 cm sFH 18',      'Artillery',          70000);
+
+INSERT INTO Orders VALUES (11, 'Panzer II',         'Tank',              120000);
+INSERT INTO Orders VALUES (12, 'Panzer III',        'Tank',              180000);
+INSERT INTO Orders VALUES (13, 'Panzer IV',         'Tank',              220000);
+INSERT INTO Orders VALUES (14, 'Panther',            'Tank',              250000);
+INSERT INTO Orders VALUES (15, 'Tiger',              'Tank',              350000);
+INSERT INTO Orders VALUES (16, 'King Tiger',         'Tank',              450000);
+
+INSERT INTO Orders VALUES (17, 'Jagdpanzer IV',      'Tank Destroyer',     210000);
+INSERT INTO Orders VALUES (18, 'Jagdpanther',        'Tank Destroyer',     280000);
+INSERT INTO Orders VALUES (19, 'Jagdtiger',          'Tank Destroyer',     400000);
+INSERT INTO Orders VALUES (20, 'Elefant',            'Tank Destroyer',     320000);
+
+INSERT INTO Orders VALUES (21, 'Wirbelwind',         'Anti Air',          145000);
+INSERT INTO Orders VALUES (22, 'Ostwind',            'Anti Air',          155000);
+INSERT INTO Orders VALUES (23, 'Wespe',              'SP Artillery',      170000);
+INSERT INTO Orders VALUES (24, 'Grille',             'SP Artillery',      165000);
+INSERT INTO Orders VALUES (25, 'Hummel',             'SP Artillery',      190000);
+
+INSERT INTO Orders VALUES (26, 'Bf 109',            'Fighter',            180000);
+INSERT INTO Orders VALUES (27, 'Fw 190',             'Fighter',            190000);
+INSERT INTO Orders VALUES (28, 'Me 262',             'Fighter',            300000);
+INSERT INTO Orders VALUES (29, 'Heinkel Bomber',     'Bomber',              200000);
+INSERT INTO Orders VALUES (30, 'Stuka',              'Ground Attack',      150000);
+
+
+SET SERVEROUTPUT ON;
+
+DECLARE
+    CURSOR order_cursor IS
+        SELECT Order_ID, Equipment, Variant, Amount
+        FROM Orders;
+BEGIN
+    FOR order_rec IN order_cursor LOOP
+
+        IF order_rec.Amount > 10000 THEN
+            DBMS_OUTPUT.PUT_LINE(
+                'Order ' || order_rec.Order_ID ||
+                ' - ' || order_rec.Equipment ||
+                ' (' || order_rec.Variant || ')' ||
+                ': High Value'
+            );
+        END IF;
+
+    END LOOP;
+END;
+/
