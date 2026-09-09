@@ -1,0 +1,73 @@
+Experiment 7.1
+CREATE TABLE GEN (
+    gen_id INT PRIMARY KEY,
+    gen_name VARCHAR(100) NOT NULL,
+	gen_rank VARCHAR(100) NOT NULL,
+	gen_command VARCHAR(100) NOT NULL,
+    gen_age INT CHECK(GEN_AGE>=18),
+    gen_skill INT NOT NULL
+);
+
+
+INSERT INTO GEN VALUES
+(1,'Walther von Brauchitsch','Field Marshal','Commander-in-Chief of the Army',62,90),
+(2,'Franz Halder','Colonel General','Chief of General Staff',59,88),
+(3,'Kurt Zeitzler','Colonel General','Chief of General Staff',48,86),
+(4,'Heinz Guderian','Colonel General','Inspector General of Armored Troops',55,98),
+(5,'Hans Krebs','General of Infantry','Chief of General Staff',45,80),
+(6,'Wilhelm Keitel','Field Marshal','Chief of OKW',61,72),
+(7,'Alfred Jodl','Colonel General','Chief of Operations Staff',53,84),
+(8,'Erich von Manstein','Field Marshal','Army Group South',56,99),
+(9,'Gerd von Rundstedt','Field Marshal','Commander West',67,95),
+(10,'Fedor von Bock','Field Marshal','Army Group Center',63,91),
+(11,'Walter Model','Field Marshal','Army Group North',52,96),
+(12,'Erwin Rommel','Field Marshal','Army Group B',52,97),
+(13,'Ewald von Kleist','Field Marshal','Army Group A',62,90),
+(14,'Günther von Kluge','Field Marshal','Army Group Center',61,89),
+(15,'Maximilian von Weichs','Field Marshal','Army Group B',62,88),
+(16,'Georg von Küchler','Field Marshal','Army Group North',62,87),
+(17,'Walter von Reichenau','Field Marshal','6th Army',59,86),
+(18,'Friedrich Paulus','Field Marshal','6th Army',53,83),
+(19,'Hermann Hoth','Colonel General','4th Panzer Army',58,92),
+(20,'Erhard Raus','Colonel General','3rd Panzer Army',54,89),
+(21,'Gotthard Heinrici','Colonel General','Army Group Vistula',57,94),
+(22,'Georg-Hans Reinhardt','Colonel General','3rd Panzer Army',56,90),
+(23,'Adolf Heusinger','General','Operations Staff OKH',46,85),
+(24,'Hans Speidel','Lieutenant General','Chief of Staff Army Group B',46,84),
+(25,'Friedrich Fromm','Colonel General','Replacement Army',55,75),
+(26,'Eduard Wagner','General of Artillery','Quartermaster General',48,82),
+(27,'Rudolf Schmundt','General of Infantry','Army Personnel Office',50,79),
+(28,'Hans von Greiffenberg','General of Infantry','Deputy Chief of General Staff',52,81),
+(29,'Friedrich Olbricht','General of Infantry','Reserve Army Office',55,83),
+(30,'Helmuth Stieff','Major General','Organizational Staff',40,78);
+
+select * from GEN
+
+SET SERVEROUTPUT ON;
+
+DECLARE
+    CURSOR gen_cursor IS
+        SELECT gen_name, gen_skill
+        FROM gen
+        ORDER BY gen_skill DESC;
+
+    v_gen_name gen.gen_name%TYPE;
+    v_salary   gen.gen_skill%TYPE;
+
+BEGIN
+    OPEN gen_cursor;
+
+    FOR i IN 1..5 LOOP
+        FETCH gen_cursor INTO v_gen_name, v_salary;
+
+        EXIT WHEN gen_cursor%NOTFOUND;
+
+        DBMS_OUTPUT.PUT_LINE(
+            'Name: ' || v_gen_name ||
+            ' | Salary: ' || v_salary
+        );
+    END LOOP;
+
+    CLOSE gen_cursor;
+END;
+/
